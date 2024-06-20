@@ -2,10 +2,25 @@ import './App.css';
 import Gallery from "./Gallery";
 import Folders from "./Folders";
 import StickyElement from "./StickyElement";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import Authenticate from "./Authenticate";
 
 function App() {
-    const [currentGallery, setCurrentGallery] = useState('main')
+    let auth = new Authenticate();
+    
+    const [currentGallery, setCurrentGallery] = useState('main');
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    useEffect(() => {
+        const auth = new Authenticate();
+        auth.authenticate().then(() => {
+            setIsAuthenticated(true);
+        }).catch(error => {
+            console.error("Authentication failed:", error);
+            setIsAuthenticated(false);
+        });
+    }, []);
+
     const changeGallery = (gallerySlug) => {
         setCurrentGallery(gallerySlug);
     }
@@ -51,12 +66,12 @@ function App() {
                             <h2>
                                 Welcome to Ketyi.com
                             </h2>
-                            <p>
-                                <Folders gallery={currentGallery} changeGallery={changeGallery}/>
-                            </p>
+                            <div>
+                                {isAuthenticated ? <Folders gallery={currentGallery} changeGallery={changeGallery}/> : <p>Authenticating...</p>}
+                            </div>
                         </div>
                         <div className="App-content-main-right">
-                            <Gallery gallery={currentGallery}/>
+                        {isAuthenticated ? <Gallery gallery={currentGallery} /> : <p>Authenticating...</p>}
                         </div>
                     </div>
                 </div>
