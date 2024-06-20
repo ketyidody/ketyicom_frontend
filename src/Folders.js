@@ -1,9 +1,6 @@
 import React from "react";
 import axios from 'axios';
 
-const PREFIX_URL =
-    "http://127.0.0.1:8000/";
-
 class Folders extends React.Component {
     constructor(props) {
         super(props);
@@ -37,7 +34,7 @@ class Folders extends React.Component {
 
         if (token) {
             try {
-                const response = await axios.get(`${PREFIX_URL}api/folders`, {
+                const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}api/folders`, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${token}`

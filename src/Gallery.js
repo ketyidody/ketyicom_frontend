@@ -2,9 +2,6 @@ import React from "react";
 import ImageGallery from "react-image-gallery";
 import axios from 'axios';
 
-const PREFIX_URL =
-    "http://127.0.0.1:8000/";
-
 class Gallery extends React.Component {
     constructor(props) {
         super(props);
@@ -38,7 +35,7 @@ class Gallery extends React.Component {
 
         if (token) {
             try {
-                const response = await axios.get(`${PREFIX_URL}api/gallery/${this.props.gallery}`, {
+                const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}api/gallery/${this.props.gallery}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${token}`
