@@ -183,6 +183,9 @@ main {
   position: sticky;
   top: 40px;
 }
+.sticky-element p {
+  word-break: break-word;
+}
 .fade-in {
   position: relative;
 }

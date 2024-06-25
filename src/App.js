@@ -82,7 +82,6 @@ function App() {
                     <a
                         className="App-link"
                         href="https://ketyi.com"
-                        target="_blank"
                         rel="noopener noreferrer"
                     >
                         ketyi.com
