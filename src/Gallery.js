@@ -1,12 +1,14 @@
 import React from "react";
 import ImageGallery from "react-image-gallery";
 import axios from 'axios';
+import { Spinner } from 'react-bootstrap';
 
 class Gallery extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             images: [],
+            loading: true,
             showIndex: false,
             showBullets: true,
             infinite: true,
@@ -31,6 +33,7 @@ class Gallery extends React.Component {
     }
 
     async fetchData() {
+        this.setState({ loading: true });
         let token = sessionStorage.getItem('token');
 
         if (token) {
@@ -49,12 +52,12 @@ class Gallery extends React.Component {
                     thumbnailClass: "featured-thumb",
                     description: item.name,
                 }));
-                this.setState({ images: images });
+                this.setState({ images: images, loading: false });
             } catch (error) {
                 console.error('Error fetching data:', error);
                 this.setState({
-                    isLoaded: true,
-                    error
+                    error,
+                    loading: false,
                 });
             }
         }
@@ -112,7 +115,19 @@ class Gallery extends React.Component {
     render() {
         if (this.state.images.length > 0) {
             return (
-                <section className="app">
+                <section className={"app fade-in " + (this.state.loading ? 'loading' : '')}>
+                    <div className="loading-overlay">
+                        <div className="lds-roller">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
                     <ImageGallery
                         ref={(i) => (this._imageGallery = i)}
                         items={this.state.images}
