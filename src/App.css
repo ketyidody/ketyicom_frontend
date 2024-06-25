@@ -19,6 +19,11 @@ main {
   line-height: 0.8rem;
   padding: 0.8rem;
 }
+@media (max-width: 725px) {
+  .App-logo {
+    display: none;
+  }
+}
 .App-header {
   background-size: 100vw;
   background: #282c34 url('../public/header.jpg') no-repeat fixed center top;

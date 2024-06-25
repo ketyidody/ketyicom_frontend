@@ -97,7 +97,7 @@ function App() {
                     <div className="App-content-main">
                         <div className="App-content-main-left">
                             <h2>
-                                Welcome to Ketyi.com
+                                My work
                             </h2>
                             <div>
                                 {isAuthenticated ? <Folders gallery={currentGallery} changeGallery={changeGallery}/> :
