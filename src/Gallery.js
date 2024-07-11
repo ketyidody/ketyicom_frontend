@@ -155,6 +155,7 @@ class Gallery extends React.Component {
                         slideOnThumbnailOver={this.state.slideOnThumbnailOver}
                         additionalClass="app-image-gallery"
                         useWindowKeyDown={this.state.useWindowKeyDown}
+                        lazyload={true}
                     />
                 </section>
             );
