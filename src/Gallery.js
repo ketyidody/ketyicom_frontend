@@ -51,6 +51,7 @@ class Gallery extends React.Component {
                     originalClass: "featured-slide",
                     thumbnailClass: "featured-thumb",
                     description: item.name,
+                    loading: "lazy",
                 }));
                 this.setState({ images: images, loading: false });
             } catch (error) {
