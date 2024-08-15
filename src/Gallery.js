@@ -52,6 +52,7 @@ class Gallery extends React.Component {
                     thumbnailClass: "featured-thumb",
                     description: item.name,
                     loading: "lazy",
+                    srcSet: `${item.path480} 480w, ${item.path800} 800w, ${item.path1280} 1280w, ${item.path1600} 1600w, ${item.path} 26000w`,
                 }));
                 this.setState({ images: images, loading: false });
             } catch (error) {
