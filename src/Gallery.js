@@ -1,7 +1,6 @@
 import React from "react";
 import ImageGallery from "react-image-gallery";
 import axios from 'axios';
-import { Spinner } from 'react-bootstrap';
 
 class Gallery extends React.Component {
     constructor(props) {

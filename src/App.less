@@ -1,6 +1,10 @@
 //@import "../node_modules/react-image-gallery/styles/scss/image-gallery.scss";
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
+.cart-open {
+  overflow: hidden;
+}
+
 main {
   background: transparent;
   font-size: 2rem;
@@ -48,9 +52,9 @@ main {
   top: 0;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
   z-index: 9999;
+  font-size: 2rem;
 
   ul {
     display: flex;
@@ -59,11 +63,10 @@ main {
     list-style-type: none;
     align-content: center;
     align-items: center;
-    padding: 0;
+    padding: 0 10px;
     margin: 0;
     overflow: hidden;
     background-color: #282c34;
-    font-size: 1rem;
 
     li {
       padding: 10px;
@@ -72,8 +75,14 @@ main {
         text-decoration: none;
         color: inherit;
         cursor: pointer;
+      }
 
-        font-size: 1.5rem;
+      .cart-icon {
+        cursor: pointer;
+      }
+
+      .cart-count {
+        transform: scale(0.8) translateY(-14px);
       }
     }
   }
@@ -373,4 +382,201 @@ main {
 
 .has-small-font-size {
   overflow-wrap: break-word;
+}
+
+.shop-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  width: 600px;
+  padding: 15px;
+}
+
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 600px; /* Adjust width as needed */
+  margin: 0 auto;
+}
+
+.product-image-container {
+  display: flex;
+  overflow: hidden; /* Hide overflow content */
+  scroll-behavior: smooth; /* Smooth scrolling */
+  width: 560px;
+  height: 560px;
+  flex-direction: row;
+
+  .scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .scroll-button.left {
+    left: 10px; /* Position to the left */
+  }
+
+  .scroll-button.right {
+    right: 10px; /* Position to the right */
+  }
+
+  img {
+    flex: 1;
+    width: 560px;
+    height: 560px;
+    object-fit: cover;
+    object-position: center;
+    margin: 0 5px;
+  }
+
+  & img:first-child {
+    margin-left: 0;
+  }
+
+  & img:last-child {
+    margin-right: 0;
+  }
+}
+
+.hidden-product-thumbnails-container {
+  display: none;
+}
+
+// cart
+.cart-overlay {
+
+  .cart-overlay-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  .cart-overlay-content {
+    z-index: 1000;
+    position: absolute;
+    top: 10vw;
+    left: 25%;
+    width: 50vw;
+    height: 80vh;
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    padding: 1% 10%;
+    color: black;
+
+    h1 {
+      border-bottom: 1px black solid;
+      margin-bottom: 30px;
+      padding: 10px;
+    }
+
+    .cart {
+      color: black;
+      border-bottom: 1px solid black;
+
+      ul {
+        background-color: white;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        li {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 10px;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          width: 100%;
+        }
+      }
+    }
+
+    .user-information {
+      margin-top: 20px;
+    }
+  }
+}
+
+.cart-title {
+  color: black;
+}
+
+.cart-close-btn-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: black;
+
+  button {
+    border: none;
+    background-color: white;
+    transform: scaleX(1.5);
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale3d(2, 1.5, 2.5);
+      transition: transform 0.2s ease-in-out;
+    }
+  }
+}
+
+.cart-summary {
+  margin-bottom: 20px;
+}
+
+.cart-total {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.user-form input {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  color: black;
+
+  &::placeholder {
+    color: #c2c2c2;
+  }
+}
+
+.order-button {
+  display: block;
+  width: 100%;
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.thank-you-message {
+  text-align: center;
+}
+
+.error {
+  color: red;
+  text-align: right;
 }
