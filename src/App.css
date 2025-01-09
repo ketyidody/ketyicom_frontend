@@ -439,7 +439,8 @@ main {
   .cart-overlay .cart-overlay-content {
     left: 5vw;
     width: 90vw;
-    top: 15vw;
+    top: 5vw;
+    height: 90vh;
   }
 }
 .cart-overlay .cart-overlay-content h1 {
